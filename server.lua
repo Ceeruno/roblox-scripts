@@ -21,6 +21,18 @@ local RemoteEvent = Instance.new("RemoteEvent")
 RemoteEvent.Parent = Tool
 
 --[[Events]]
+Player.Chatted:Connect(function(text)
+		local splitText = text:split(' ')
+
+		if splitText[1] == '.SPS' then
+			STUDS_PER_SECOND = tonumber(splitText[2])
+		elseif splitText[1] == '.S' then
+			STEPS = tonumber(splitText[2])
+		elseif splitText[1] == 'TPS' then
+			TIME_PER_STEP = tonumber(splitText[2])
+		end
+end)
+
 RemoteEvent.OnServerEvent:Connect(function(caller, origin, target)
         local direction = (target - origin).Unit
         
