@@ -31,7 +31,7 @@ RemoteEvent.OnServerEvent:Connect(function(caller, origin, target)
         projectile.Touched:Connect(function(hit)
                 local humanoid = hit.Parent:FindFirstChildOfClass("Humanoid")
                 
-                if humanoid and humanoid.Health > 0 and not Players:GetPlayerFromCharacter(Hit.Parent) then
+                if humanoid and humanoid.Health > 0 and not Players:GetPlayerFromCharacter(hit.Parent) then
                     humanoid.Health -= 10
                 end
         end)
