@@ -10,5 +10,5 @@ local RemoteEvent = Tool.RemoteEvent
 
 --[[Events]]
 Tool.Activated:Connect(function()
-		RemoteEvent:FireServer(Handle.Position, Mouse.Hit.p)
+		RemoteEvent:FireServer(Handle.Position, Mouse.Hit.Position)
 end)
