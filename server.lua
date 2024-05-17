@@ -22,26 +22,26 @@ RemoteEvent.Parent = Tool
 
 --[[Events]]
 RemoteEvent.OnServerEvent:Connect(function(caller, origin, target)
-    local direction = (target - origin).Unit
-    
-    local projectile = Projectile:Clone()
-    projectile.Position = origin
-    projectile.Parent = workspace
-
-    projectile.Touched:Connect(function(hit)
-        local humanoid = hit.Parent:FindFirstChildOfClass("Humanoid")
-
-        if humanoid and humanoid.Health > 0 and not Players:GetPlayerFromCharacter(Hit.Parent) then
-          humanoid.Health -= 10
+        local direction = (target - origin).Unit
+        
+        local projectile = Projectile:Clone()
+        projectile.Position = origin
+        projectile.Parent = workspace
+        
+        projectile.Touched:Connect(function(hit)
+                local humanoid = hit.Parent:FindFirstChildOfClass("Humanoid")
+                
+                if humanoid and humanoid.Health > 0 and not Players:GetPlayerFromCharacter(Hit.Parent) then
+                    humanoid.Health -= 10
+                end
+        end)
+        
+        for step = 1, STEPS, 1 do
+            projectile.Position += direction * STUDS_PER_STEP
+            
+            task.wait(TIME_PER_STEP)
         end
-    end)
-    
-    for step = 1, STEPS, 1 do
-      projectile.Position += direction * STUDS_PER_STEP
-      
-      task.wait(TIME_PER_STEP)
-    end
-    projectile:Destroy()
+        projectile:Destroy()
 end)
 
 Tool.Parent = Player.Backpack
