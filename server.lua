@@ -7,7 +7,7 @@ local TIME_PER_STEP = 1 / 8
 local Players = game:GetService("Players")
 
 --[[Instances]]
-local Player = Players.Misinformater
+local Player
 local Projectile = Instance.new("Part")
 Projectile.Size = Vector3.new(1, 1, 1)
 Projectile.Anchored = true
@@ -62,4 +62,8 @@ RemoteEvent.OnServerEvent:Connect(function(caller, origin, target)
         return
 end)
 
-Tool.Parent = Player.Backpack
+Handle.Position = Vector3.new(0, 10, 0)
+Tool.Equipped:Connect(function()
+	Player = Players:GetPlayerFromCharacter(Tool.Parent)
+end)
+Tool.Parent = workspace
