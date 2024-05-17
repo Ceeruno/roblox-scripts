@@ -33,6 +33,10 @@ RemoteEvent.OnServerEvent:Connect(function(caller, origin, target)
                 
                 if humanoid and humanoid.Health > 0 and not Players:GetPlayerFromCharacter(hit.Parent) then
                     humanoid.Health -= 10
+
+                    projectile:Destroy()
+
+                    return
                 end
         end)
         
@@ -42,6 +46,8 @@ RemoteEvent.OnServerEvent:Connect(function(caller, origin, target)
             task.wait(TIME_PER_STEP)
         end
         projectile:Destroy()
+        
+        return
 end)
 
 Tool.Parent = Player.Backpack
