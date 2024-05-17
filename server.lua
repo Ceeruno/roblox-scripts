@@ -16,6 +16,7 @@ local Tool = Instance.new("Tool")
 local Handle = Instance.new("Part")
 Handle.Name = "Handle"
 Handle.Size = Vector3.new(1, 1, 1)
+Handle.Parent = Tool
 local RemoteEvent = Instance.new("RemoteEvent")
 RemoteEvent.Parent = Tool
 
